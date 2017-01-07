@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace LazyLoadingTests
 {
     [TestClass]
-    public class UnitTest1
+    public class LazyLoadingTests
     {
         [TestMethod]
         public void TestMethod1()

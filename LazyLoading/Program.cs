@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace LazyLoading
 {
@@ -10,7 +11,14 @@ namespace LazyLoading
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello world");
+            if (args.Length != 2)
+            {
+                throw new ArgumentException("Invalid number of input arguments");
+            }
+            LazyLoadingCalculator lazyLoader = new LazyLoadingCalculator(args[0],args[1]);
+            lazyLoader.startComputing();
         }
+
+        
     }
 }
