@@ -21,7 +21,5 @@ namespace LazyLoading
             lazyLoader.Init(args[0], args[1]);
             lazyLoader.startComputing();
         }
-
-        
     }
 }

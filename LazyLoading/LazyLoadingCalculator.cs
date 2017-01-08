@@ -7,6 +7,7 @@ using System.IO;
 
 namespace LazyLoading
 {
+
     public class LazyLoadingCalculator
     {
         string inputPath;
@@ -48,8 +49,6 @@ namespace LazyLoading
                 itemsWeights.Clear();
                 linenumber++;
 
-
-
                 for (int j = 0; j < numberOfItemsForCurrentDay; j++)
                 {
                     linenumber++;
@@ -72,7 +71,7 @@ namespace LazyLoading
                 return 1;
 
             int amountOfTrips = 0;
-            
+
             itemsWeights.Sort();
             int topItem;
             int numberOfItemsNeededToFakeHeavyLifting = 0;
@@ -99,4 +98,5 @@ namespace LazyLoading
             return amountOfTrips;
         }
     }
+
 }
