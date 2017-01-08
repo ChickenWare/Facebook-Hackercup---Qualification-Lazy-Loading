@@ -13,7 +13,15 @@ namespace LazyLoading
         string outputPath;
         const int minimumApparentWeight = 50;
 
-        public LazyLoadingCalculator(string inputPath, string outputPath)
+        public void Dispose()
+        {
+            GC.SuppressFinalize(this);
+        }
+
+        public LazyLoadingCalculator()
+        {
+        }
+        public void Init(string inputPath, string outputPath)
         {
             this.inputPath = inputPath;
             this.outputPath = outputPath;
@@ -33,14 +41,18 @@ namespace LazyLoading
             int optimalRoundTripsForCurrentDay = 0;
 
             List<int> itemsWeights = new List<int>();
-
+            int linenumber = 1;
             for (int i = 1; i <= numberOfWorkingDays; i++)
             {
                 int numberOfItemsForCurrentDay = Convert.ToInt32(reader.ReadLine());
                 itemsWeights.Clear();
+                linenumber++;
+
+
 
                 for (int j = 0; j < numberOfItemsForCurrentDay; j++)
                 {
+                    linenumber++;
                     itemsWeights.Add(Convert.ToInt32(reader.ReadLine()));
                 }
 
@@ -83,11 +95,6 @@ namespace LazyLoading
                     itemsWeights.Clear();
                 }
             }
-
-            
-
-
-            
 
             return amountOfTrips;
         }

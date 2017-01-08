@@ -13,10 +13,12 @@ namespace LazyLoading
         {
             if (args.Length != 2)
             {
-                throw new ArgumentException("Invalid number of input arguments");
+                Console.WriteLine("Wrong number of parameters");
+                Console.ReadLine();
             }
 
-            LazyLoadingCalculator lazyLoader = new LazyLoadingCalculator(args[0],args[1]);
+            LazyLoadingCalculator lazyLoader = new LazyLoadingCalculator();
+            lazyLoader.Init(args[0], args[1]);
             lazyLoader.startComputing();
         }
 
