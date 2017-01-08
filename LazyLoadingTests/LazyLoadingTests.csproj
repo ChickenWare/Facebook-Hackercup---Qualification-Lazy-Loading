@@ -50,8 +50,15 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="FileAssert.cs" />
     <Compile Include="LazyLoadingTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LazyLoading\LazyLoading.csproj">
+      <Project>{7ac37237-25d0-4939-be58-1c2c16cade16}</Project>
+      <Name>LazyLoading</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

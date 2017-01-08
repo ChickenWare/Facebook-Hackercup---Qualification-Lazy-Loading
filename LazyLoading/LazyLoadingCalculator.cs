@@ -11,6 +11,7 @@ namespace LazyLoading
     {
         string inputPath;
         string outputPath;
+        const int minimumApparentWeight = 50;
 
         public LazyLoadingCalculator(string inputPath, string outputPath)
         {
@@ -45,7 +46,7 @@ namespace LazyLoading
 
                 optimalRoundTripsForCurrentDay = ComputeMaximumRoundTrips(itemsWeights);
 
-                writer.Write(string.Format("Case #{0}: {1}", i, optimalRoundTripsForCurrentDay));
+                writer.Write(string.Format("Case #{0}: {1}\n", i, optimalRoundTripsForCurrentDay));
             }
 
             reader.Close();
@@ -55,9 +56,38 @@ namespace LazyLoading
 
         public int ComputeMaximumRoundTrips(List<int> itemsWeights)
         {
+            if (itemsWeights.Count == 1)
+                return 1;
+
             int amountOfTrips = 0;
             
             itemsWeights.Sort();
+            int topItem;
+            int numberOfItemsNeededToFakeHeavyLifting = 0;
+
+            while (itemsWeights.Count > 0)
+            {
+                topItem = itemsWeights.Last();
+                itemsWeights.Remove(topItem);
+                numberOfItemsNeededToFakeHeavyLifting = (int)Math.Ceiling((double)minimumApparentWeight / (double)topItem);
+
+                if (itemsWeights.Count >= (numberOfItemsNeededToFakeHeavyLifting - 1))
+                {
+                    itemsWeights.RemoveRange(0, numberOfItemsNeededToFakeHeavyLifting - 1);
+                    amountOfTrips++;
+                }
+                else
+                {
+                    //There are not enough items to fake the last trip - Asuming they go into other trips 
+                    // Discard rest of list
+                    itemsWeights.Clear();
+                }
+            }
+
+            
+
+
+            
 
             return amountOfTrips;
         }

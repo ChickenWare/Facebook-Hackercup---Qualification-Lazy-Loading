@@ -15,6 +15,7 @@ namespace LazyLoading
             {
                 throw new ArgumentException("Invalid number of input arguments");
             }
+
             LazyLoadingCalculator lazyLoader = new LazyLoadingCalculator(args[0],args[1]);
             lazyLoader.startComputing();
         }
